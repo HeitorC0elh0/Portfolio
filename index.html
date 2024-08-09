@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -25,19 +26,19 @@ body, html {
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-  background-image: url('/w3images/parallax1.jpg');
+  background-image: url('images/img1.jpeg');
   min-height: 100%;
 }
 
 /* Second image (Portfolio) */
 .bgimg-2 {
-  background-image: url("/w3images/parallax2.jpg");
+  background-image: url("images/img1.jpeg");
   min-height: 400px;
 }
 
 /* Third image (Contact) */
 .bgimg-3 {
-  background-image: url("/w3images/parallax3.jpg");
+  background-image: url("images/img1.jpeg");
   min-height: 400px;
 }
 
@@ -51,10 +52,79 @@ body, html {
     min-height: 400px;
   }
 }
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-button {
+  background-color: #0563bb;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-button:hover {
+  background-color: #034a8f;
+}
+
+/* Styles for filtering projects */
+.filterDiv {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+.filterDiv img {
+    width: 250px; /* Defina a largura desejada */
+    height: 200px; /* Defina a altura desejada */
+    object-fit: cover; /* Mantém a proporção e recorta a imagem, se necessário */
+    display: block; /* Remove possíveis espaçamentos abaixo das imagens */
+    margin: 0 auto; /* Centraliza a imagem no contêiner */
+}
 </style>
 </head>
 <body>
 
+
+  
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar" id="myNavbar">
@@ -82,61 +152,187 @@ body, html {
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">MY <span class="w3-hide-small">WEBSITE</span> LOGO</span>
+    <span class="typing-text w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"></span>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const text = "WELCOME TO MY DATA ANALYSIS PORTFOLIO";
+      let index = 0;
+      const typingSpeed = 175; // Adjust typing speed here
+      const typingElement = document.querySelector(".typing-text");
+
+      function typeText() {
+          if (index < text.length) {
+              typingElement.innerHTML += text.charAt(index);
+              index++;
+              setTimeout(typeText, typingSpeed);
+          }
+      }
+
+      typeText();
+  });
+
+
+  function openModal(projectId) {
+    const projects = {
+      project1: {
+        title: "Project 1 Title",
+        description: "This is a description for project 1.",
+        link: "#"
+      },
+      project2: {
+        title: "Project 2 Title",
+        description: "This is a description for project 2.",
+        link: "#"
+      },
+      project3: {
+        title: "Project 3 Title",
+        description: "This is a description for project 3.",
+        link: "#"
+      },
+      project4: {
+        title: "Project 4 Title",
+        description: "This is a description for project 4.",
+        link: "#"
+      },
+      project5: {
+        title: "Project 5 Title",
+        description: "This is a description for project 5.",
+        link: "#"
+      },
+      project6: {
+        title: "Project 6 Title",
+        description: "This is a description for project 6.",
+        link: "#"
+      },
+      project7: {
+        title: "Project 7 Title",
+        description: "This is a description for project 7.",
+        link: "#"
+      },
+      project8: {
+        title: "Project 8 Title",
+        description: "This is a description for project 8.",
+        link: "#"
+      }
+    };
+
+    const project = projects[projectId];
+    document.getElementById("projectTitle").innerText = project.title;
+    document.getElementById("projectDescription").innerText = project.description;
+    document.getElementById("projectLink").href = project.link;
+    document.getElementById("projectModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("projectModal").style.display = "none";
+  }
+
+  // Change style of navbar on scroll
+  window.onscroll = function() {myFunction()};
+  function myFunction() {
+      var navbar = document.getElementById("myNavbar");
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+          navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+      } else {
+          navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+      }
+  }
+
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function toggleFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+      } else {
+          x.className = x.className.replace(" w3-show", "");
+      }
+  }
+</script>
 
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-center">ABOUT ME</h3>
-  <p class="w3-center"><em>I love photography</em></p>
-  <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-    qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <div class="w3-row">
+  <p class="w3-center"><em>Passionate About Data Analysis and Data Science</em></p>
+  <p style="text-align: justify;">
+    I began my path in Data Analysis about three years ago through extensive research and introductory courses in the field. To enhance my knowledge, 
+    I started a Master's in Biostatistics and Bioinformatics Applied to Health, as well as a postgraduate degree in Data Science. 
+    As part of the master's degree, I enrolled in an internship as a biostatistician at a clinical trials company. This experience allowed me to develop further my analytical and programming skills in R. Currently 
+    I am honing my programming skills in data analytics in an online course designed by Google. Although my experience is mainly academic at the moment, 
+    I am motivated by challenges and excited about the possibility of contributing to innovative projects and expanding my knowledge.
+  </p>
     <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i>My Name</b></p><br>
-      <img src="/w3images/avatar_hat.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+      <img src="images/img2.jpeg" class="w3-round w3-image" alt="Photo of Me" style="width: 100%; max-width: 600px;">
     </div>
 
     <!-- Hide this text on small devices -->
-    <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Welcome to my website. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <d<div class="w3-col m6 w3-padding-large" style="padding-right: 0; text-align: justify;">
+      <p>
+        Hello, I'm Heitor Coelho. Outside of my professional life, I have a deep passion for exploring new technologies and staying updated with the latest advancements in data science. My curiosity drives me to continually learn and apply new techniques to solve real-world problems.
+      </p>
+      <p>
+        In my free time, I enjoy spending moments with my family and friends, as well as taking my dog for walks in nature. These activities help me maintain a balanced life and provide fresh perspectives that I often bring into my work.
+      </p>
+      <p>
+        I am currently transitioning my career towards data analysis, driven by a desire to leverage my analytical skills to make impactful contributions in these fields. This decision is motivated by my passion for data-driven decision-making and my commitment to continuous learning and professional growth.
+      </p>
+      <p>
+        I am eager to leverage my skills and experiences in new challenges and look forward to opportunities where I can contribute to innovative projects, learn from others, and continue to grow as a data professional.
+      </p>
     </div>
   </div>
-  <p class="w3-large w3-center w3-padding-16">Im really good at:</p>
-  <p class="w3-wide"><i class="fa fa-camera"></i>Photography</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Web Design</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-photo"></i>Photoshop</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
+  <p class="w3-large w3-center w3-padding-16">My Skills:</p>
+  <div style="padding-left: 40px;">
+    <p class="w3-wide"><i class="fa fa-bar-chart"></i> R Programming</p>
+    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
+    </div>
+    <ul style="list-style-type: disc; margin-left: 5px;">
+      <li>Data Wrangling</li>
+      <li>Exploratory Data Analysis (EDA)</li>
+      <li>Regression Analysis</li>
+      <li>Data Visualization</li>
+    </ul>
+    <p class="w3-wide"><i class="fa fa-code"></i> Python</p>
+    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
+    </div>
+    <ul style="list-style-type: disc; margin-left: 5px;">
+      <li>Data Wrangling</li>
+      <li>Exploratory Data Analysis (EDA)</li>
+      <li>Regression Analysis</li>
+      <li>Data Visualization</li>
+    </ul>
+    <p class="w3-wide"><i class="fa fa-line-chart"></i> Data Analysis</p>
+    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
+    </div>
+    <p class="w3-wide"><i class="fa fa-database"></i> SQL</p>
+    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
+    </div>
+    <p class="w3-wide"><i class="fa fa-bar-chart"></i> Tableau</p>
+    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
+    </div>
   </div>
 </div>
 
+
+
 <div class="w3-row w3-center w3-dark-grey w3-padding-16">
   <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">14+</span><br>
-    Partners
+    <span class="w3-xlarge">1</span><br>
+    R Projects
   </div>
   <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">55+</span><br>
-    Projects Done
+    <span class="w3-xlarge">2</span><br>
+    Python Projects
   </div>
   <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">89+</span><br>
-    Happy Clients
+    <span class="w3-xlarge">1</span><br>
+    SQL Projects
   </div>
   <div class="w3-quarter w3-section">
-    <span class="w3-xlarge">150+</span><br>
-    Meetings
+    <span class="w3-xlarge">1</span><br>
+    Tableau Projects
   </div>
 </div>
 
@@ -150,44 +346,54 @@ body, html {
 <!-- Container (Portfolio Section) -->
 <div class="w3-content w3-container w3-padding-64" id="portfolio">
   <h3 class="w3-center">MY WORK</h3>
-  <p class="w3-center"><em>Here are some of my latest lorem work ipsum tipsum.<br> Click on the images to make them bigger</em></p><br>
+  <p class="w3-center"><em>Here are some of my latest work.<br> Click on the images to see more details about the project</em></p><br>
+
+  <!-- Portfolio Filters -->
+  <div class="w3-center">
+    <button class="w3-button w3-light-grey" onclick="filterSelection('all')"> Show all</button>
+    <button class="w3-button w3-light-grey" onclick="filterSelection('R')"> R</button>
+    <button class="w3-button w3-light-grey" onclick="filterSelection('python')"> Python</button>
+    <button class="w3-button w3-light-grey" onclick="filterSelection('sql')"> SQL</button>
+    <button class="w3-button w3-light-grey" onclick="filterSelection('tableau')"> Tableau</button>
+    <button class="w3-button w3-light-grey" onclick="filterSelection('university')"> University Projects</button>
+  </div>
+
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-  <div class="w3-row-padding w3-center">
-    <div class="w3-col m3">
-      <img src="/w3images/p1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist over the mountains">
+  <div class="w3-row-padding w3-center filter-container">
+    <div class="w3-col m3 filterDiv R">
+      <img src="images/img2.jpeg" style="width:100%" onclick="openModal('project1')" class="w3-hover-opacity" alt="Project 1">
     </div>
 
-    <div class="w3-col m3">
-      <img src="/w3images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Coffee beans">
+    <div class="w3-col m3 filterDiv python">
+      <img src="images/img1.jpeg" style="width:100%" onclick="openModal('project2')" class="w3-hover-opacity" alt="Project 2">
     </div>
 
-    <div class="w3-col m3">
-      <img src="/w3images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Bear closeup">
+    <div class="w3-col m3 filterDiv python">
+      <img src="images/pic01.jpg" style="width:100%" onclick="openModal('project3')" class="w3-hover-opacity" alt="Project 3">
     </div>
 
-    <div class="w3-col m3">
-      <img src="/w3images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
+    <div class="w3-col m3 filterDiv tableau">
+      <img src="images/pic02.jpg" style="width:100%" onclick="openModal('project4')" class="w3-hover-opacity" alt="Project 4">
     </div>
   </div>
 
   <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-      <img src="/w3images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist">
+    <div class="w3-col m3 filterDiv university">
+      <img src="images/pic03.jpg" style="width:100%" onclick="openModal('project5')" class="w3-hover-opacity" alt="Project 5">
     </div>
 
-    <div class="w3-col m3">
-      <img src="/w3images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="My beloved typewriter">
+    <div class="w3-col m3 filterDiv python">
+      <img src="images/pic04.jpg" style="width:100%" onclick="openModal('project6')" class="w3-hover-opacity" alt="Project 6">
     </div>
 
-    <div class="w3-col m3">
-      <img src="/w3images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Empty ghost train">
+    <div class="w3-col m3 filterDiv sql">
+      <img src="images/pic05.jpg" style="width:100%" onclick="openModal('project7')" class="w3-hover-opacity" alt="Project 7">
     </div>
 
-    <div class="w3-col m3">
-      <img src="/w3images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Sailing">
+    <div class="w3-col m3 filterDiv tableau">
+      <img src="images/img2.jpeg" style="width:100%" onclick="openModal('project8')" class="w3-hover-opacity" alt="Project 8">
     </div>
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>
   </div>
 </div>
 
@@ -200,6 +406,17 @@ body, html {
   </div>
 </div>
 
+<!-- Custom Modal for project descriptions -->
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="projectTitle"></h2>
+    <p id="projectDescription"></p>
+    <a id="projectLink" href="#" class="modal-button">View Full Project</a>
+  </div>
+</div>
+
+
 <!-- Third Parallax Image with Portfolio Text -->
 <div class="bgimg-3 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
@@ -209,8 +426,8 @@ body, html {
 
 <!-- Container (Contact Section) -->
 <div class="w3-content w3-container w3-padding-64" id="contact">
-  <h3 class="w3-center">WHERE I WORK</h3>
-  <p class="w3-center"><em>I'd love your feedback!</em></p>
+  <h3 class="w3-center">Hope you liked my work</h3>
+  <p class="w3-center"><em>I'd love to get your feedback about my projects!</em></p>
 
   <div class="w3-row w3-padding-32 w3-section">
     <div class="w3-col m4 w3-container">
@@ -218,28 +435,29 @@ body, html {
     </div>
     <div class="w3-col m8 w3-panel">
       <div class="w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Chicago, US<br>
-        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +00 151515<br>
-        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: mail@mail.com<br>
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Lousada, Porto, Portugal<br>
+        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +351 915577754<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: rafaelcoelho.160@gmail.com<br>
       </div>
-      <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
-      <form action="/action_page.php" target="_blank">
+      <p>Please leave your feedback:</p>
+      <form action="process_form.php" method="post">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-          </div>
-          <div class="w3-half">
-            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
-          </div>
+            <div class="w3-half">
+                <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+                <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
         </div>
         <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
         <button class="w3-button w3-black w3-right w3-section" type="submit">
-          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+            <i class="fa fa-paper-plane"></i> SEND MESSAGE
         </button>
-      </form>
+    </form>    
     </div>
   </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
@@ -284,6 +502,70 @@ function toggleFunction() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+</script>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+<script>
+    // Scrolly.
+    $('.scrolly').scrolly({
+        speed: 1500,
+        offset: $('#header').outerHeight()
+    });
+
+    // Menu.
+    $('#menu')
+        .append('<a href="#menu" class="close"></a>')
+        .appendTo($('body'))
+        .panel({
+            delay: 500,
+            hideOnClick: true,
+            hideOnSwipe: true,
+            resetScroll: true,
+            resetForms: true,
+            side: 'right',
+            target: $('body'),
+            visibleClass: 'is-menu-visible'
+        });
+
+    // Filter Projects
+    function filterSelection(category) {
+        var elements, i;
+        elements = document.getElementsByClassName("filterDiv");
+        if (category == "all") category = "";
+        for (i = 0; i < elements.length; i++) {
+            w3RemoveClass(elements[i], "show");
+            if (elements[i].className.indexOf(category) > -1) w3AddClass(elements[i], "show");
+        }
+    }
+
+    function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {
+                element.className += " " + arr2[i];
+            }
+        }
+    }
+
+    function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    // Inicializar para mostrar todos os projetos ao carregar a página
+    filterSelection("all");
 </script>
 
 </body>

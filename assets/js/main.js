@@ -81,3 +81,42 @@
 		}
 
 })(jQuery);
+
+
+function filterSelection(category) {
+	var elements, i;
+	elements = document.getElementsByClassName("filterDiv");
+	if (category == "all") category = "";
+	for (i = 0; i < elements.length; i++) {
+	  w3RemoveClass(elements[i], "show");
+	  if (elements[i].className.indexOf(category) > -1) w3AddClass(elements[i], "show");
+	}
+  }
+  
+  function w3AddClass(element, name) {
+	var i, arr1, arr2;
+	arr1 = element.className.split(" ");
+	arr2 = name.split(" ");
+	for (i = 0; i < arr2.length; i++) {
+	  if (arr1.indexOf(arr2[i]) == -1) {
+		element.className += " " + arr2[i];
+	  }
+	}
+  }
+  
+  function w3RemoveClass(element, name) {
+	var i, arr1, arr2;
+	arr1 = element.className.split(" ");
+	arr2 = name.split(" ");
+	for (i = 0; i < arr2.length; i++) {
+	  while (arr1.indexOf(arr2[i]) > -1) {
+		arr1.splice(arr1.indexOf(arr2[i]), 1);
+	  }
+	}
+	element.className = arr1.join(" ");
+  }
+  
+  // Inicializar para mostrar todos os projetos ao carregar a página
+  filterSelection("all");
+
+  
