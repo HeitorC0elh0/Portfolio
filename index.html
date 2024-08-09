@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
 body, html {
@@ -119,6 +123,29 @@ body, html {
     display: block; /* Remove possíveis espaçamentos abaixo das imagens */
     margin: 0 auto; /* Centraliza a imagem no contêiner */
 }
+
+.skills-container {
+    display: flex;
+    justify-content: space-around; /* Distribui as colunas igualmente */
+    flex-wrap: wrap; /* Permite quebrar a linha se o espaço for pequeno */
+    gap: 20px; /* Espaçamento entre as colunas */
+  }
+
+  .skills-container > div {
+    flex: 1; /* Faz as colunas terem tamanhos iguais */
+    min-width: 200px; /* Define um tamanho mínimo para cada coluna */
+  }
+
+  .skills-container p {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .skills-container ul {
+    margin-left: 0; /* Remove o recuo padrão da lista */
+    padding-left: 1.0em; /* Adiciona um recuo de preenchimento para alinhar com o ícone */
+  }
 </style>
 </head>
 <body>
@@ -266,7 +293,6 @@ body, html {
     <div class="w3-col m6 w3-center w3-padding-large">
       <img src="images/img2.jpeg" class="w3-round w3-image" alt="Photo of Me" style="width: 100%; max-width: 600px;">
     </div>
-
     <!-- Hide this text on small devices -->
     <d<div class="w3-col m6 w3-padding-large" style="padding-right: 0; text-align: justify;">
       <p>
@@ -283,37 +309,42 @@ body, html {
       </p>
     </div>
   </div>
-  <p class="w3-large w3-center w3-padding-16">My Skills:</p>
-  <div style="padding-left: 40px;">
-    <p class="w3-wide"><i class="fa fa-bar-chart"></i> R Programming</p>
-    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
-    </div>
-    <ul style="list-style-type: disc; margin-left: 5px;">
-      <li>Data Wrangling</li>
-      <li>Exploratory Data Analysis (EDA)</li>
-      <li>Regression Analysis</li>
-      <li>Data Visualization</li>
-    </ul>
-    <p class="w3-wide"><i class="fa fa-code"></i> Python</p>
-    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
-    </div>
-    <ul style="list-style-type: disc; margin-left: 5px;">
-      <li>Data Wrangling</li>
-      <li>Exploratory Data Analysis (EDA)</li>
-      <li>Regression Analysis</li>
-      <li>Data Visualization</li>
-    </ul>
-    <p class="w3-wide"><i class="fa fa-line-chart"></i> Data Analysis</p>
-    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
-    </div>
-    <p class="w3-wide"><i class="fa fa-database"></i> SQL</p>
-    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
-    </div>
-    <p class="w3-wide"><i class="fa fa-bar-chart"></i> Tableau</p>
-    <div class="w3-light-grey" style="margin-left: 40px; margin-right: 40px;">
+  <div style="padding-left: 40px; padding-right: 40px;">
+    <p class="w3-large w3-center w3-padding-16">My Skills:</p>
+    <div class="skills-container">
+      <div>
+        <p><i class="fa fa-bar-chart"></i> R Programming</p>
+        <ul style="list-style-type: disc;">
+          <li>Data Wrangling</li>
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Regression Analysis</li>
+          <li>Data Visualization</li>
+        </ul>
+      </div>
+      <div>
+        <p><i class="fa fa-code"></i> Python</p>
+        <ul style="list-style-type: disc;">
+          <li>Data Wrangling</li>
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Regression Analysis</li>
+          <li>Data Visualization</li>
+        </ul>
+      </div>
+      <div>
+        <p><i class="fa fa-line-chart"></i> Data Analysis</p>
+        <ul style="list-style-type: disc;">
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Statistical Analysis</li>
+        </ul>
+      </div>
+      <div>
+        <p><i class="fa fa-database"></i> SQL</p>
+      </div>
+      <div>
+        <p><i class="fa fa-bar-chart"></i> Tableau</p>
+      </div>
     </div>
   </div>
-</div>
 
 
 
@@ -429,46 +460,44 @@ body, html {
   <h3 class="w3-center">Hope you liked my work</h3>
   <p class="w3-center"><em>I'd love to get your feedback about my projects!</em></p>
 
-  <div class="w3-row w3-padding-32 w3-section">
-    <div class="w3-col m4 w3-container">
-      <img src="/w3images/map.jpg" class="w3-image w3-round" style="width:100%">
-    </div>
-    <div class="w3-col m8 w3-panel">
+  <div class="w3-row w3-padding-32 w3-section" style="max-width: 600px; margin: 0 auto;">
+    <div class="w3-col w3-container" style="width: 100%;">
       <div class="w3-large w3-margin-bottom">
         <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Lousada, Porto, Portugal<br>
         <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: +351 915577754<br>
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: rafaelcoelho.160@gmail.com<br>
       </div>
       <p>Please leave your feedback:</p>
-      <form action="https://formspree.io/f/mldrnbpj" method="POST">
+      <form action="https://formspree.io/f/mldrnbpj" method="POST" style="width: 100%;">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #ccc;">
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="_replyto" required>
+        <input type="email" id="email" name="_replyto" required style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #ccc;">
 
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
 
-        <button type="submit">Send</button>
+        <button type="submit" style="width: 100%; background-color: #4CAF50; color: white; padding: 14px 20px; border: none; border-radius: 4px; cursor: pointer;">Send</button>
       </form>
     </div>
   </div>
 </div>
 
 
+
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <!--<i class="fa fa-facebook-official w3-hover-opacity"></i> -->
+    <a href="https://www.instagram.com/rafacoelho16?igsh=MXc4aHU1NDdrZjkzMg==" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i> 
+   <!-- <i class="fa fa-snapchat w3-hover-opacity"></i> -->
+   <!-- <i class="fa fa-pinterest-p w3-hover-opacity"></i> -->
+   <!-- <i class="fa fa-twitter w3-hover-opacity"></i> -->
+    <a href="https://www.linkedin.com/in/heitor-coelho-a10999159/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <p>Adapted from <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS Template" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
  
 <script>
@@ -501,11 +530,6 @@ function toggleFunction() {
     }
 }
 </script>
-
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/main.js"></script>
-
-
 <script>
     // Scrolly.
     $('.scrolly').scrolly({
