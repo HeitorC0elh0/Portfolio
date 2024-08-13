@@ -75,6 +75,7 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap; /* Permite que o conteúdo seja empilhado em telas menores */
 }
 
 .modal-text {
@@ -86,14 +87,14 @@ body, html {
 .modal-image {
   flex: 1;
   display: flex;
-  align-items: flex-start;
-  margin-top: 60px;
-  width: 100%;
+  justify-content: center;
+  margin-top: 20px; /* Adiciona espaço acima da imagem */
 }
 
 .modal-image img {
   width: 100%;
   height: auto;
+  max-width: 500px; /* Limita a largura máxima da imagem */
   object-fit: cover;
 }
 
@@ -128,8 +129,23 @@ body, html {
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
-  display: block;  /* Faz o botão ser exibido como bloco */
+  display: block; /* Faz o botão ser exibido como bloco */
   margin: 20px auto; /* Centraliza o botão */
+}
+
+@media (max-width: 768px) {
+  .modal-body {
+    flex-direction: column; /* Empilha o texto e a imagem em telas menores */
+  }
+
+  .modal-text {
+    margin-right: 0;
+    margin-bottom: 20px; /* Espaço abaixo do texto */
+  }
+
+  .modal-image {
+    margin-top: 0; /* Remove o espaço acima da imagem em telas menores */
+  }
 }
 
 .modal-button:hover {
