@@ -71,6 +71,32 @@ body, html {
   background-color: rgba(0,0,0,0.9);
   padding-top: 60px;
 }
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-text {
+  flex: 1;
+  margin-right: 20px;
+  text-align: justify;
+}
+
+.modal-image {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 60px;
+  width: 100%;
+}
+
+.modal-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 
 .modal-content {
   background-color: #fefefe;
@@ -102,11 +128,14 @@ body, html {
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
+  display: block;  /* Faz o botão ser exibido como bloco */
+  margin: 20px auto; /* Centraliza o botão */
 }
 
 .modal-button:hover {
   background-color: #034a8f;
 }
+
 
 /* Styles for filtering projects */
 .filterDiv {
@@ -205,9 +234,12 @@ body, html {
   function openModal(projectId) {
     const projects = {
       project1: {
-        title: "Project 1 Title",
-        description: "This is a description for project 1.",
-        link: "MelbourneHousingMarket.html"
+        title: "Housing Market in Melbourne",
+        description: "In this project i delve into the housing market of Melbourne to uncover the key factors that influence property valuations. Through comprehensive data exploration and analysis, the aim is to identify patterns, trends, and relationships within the dataset that drive housing prices. The project culminates in a robust regression analysis, where we quantify the impact of various features.",
+        keywords: "Data Wrangling, Exploratory Data Analysis (EDA), Regression Analysis, Data Visualization",
+        link: "MelbourneHousingMarket.html",
+        image: "images/Melburnian_Skyline_b.jpg"
+        
       },
       project2: {
         title: "Project 2 Title",
@@ -249,7 +281,9 @@ body, html {
     const project = projects[projectId];
     document.getElementById("projectTitle").innerText = project.title;
     document.getElementById("projectDescription").innerText = project.description;
+    document.getElementById("projectKeywords").innerHTML = "<strong style='color: black;'>Keywords:</strong> " + project.keywords;
     document.getElementById("projectLink").href = project.link;
+    document.querySelector(".modal-image img").src = project.image;
     document.getElementById("projectModal").style.display = "block";
   }
 
@@ -441,11 +475,22 @@ body, html {
 <div id="projectModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
-    <h2 id="projectTitle"></h2>
-    <p id="projectDescription"></p>
-    <a id="projectLink" href="#" class="modal-button">View Full Project</a>
+    <div class="modal-body">
+      <div class="modal-text">
+        <h2 id="projectTitle"></h2>
+        <p id="projectDescription"></p>
+        <p id="projectKeywords"></p>
+        <a id="projectLink" href="#" class="modal-button">View Full Project</a>
+      </div>
+      <div class="modal-image">
+        <img src="path_to_your_image" alt="Project Image">
+      </div>
+    </div>
   </div>
 </div>
+
+
+
 
 
 <!-- Third Parallax Image with Portfolio Text -->
