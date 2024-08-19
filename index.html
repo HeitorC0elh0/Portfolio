@@ -279,13 +279,15 @@ body, html {
       },
       project6: {
         title: "Analysis of Life Expectancy: A Socioeconomic Perspective",
-        description: "This project, developed using Power BI, investigates the influence of various socioeconomic factors on life expectancy across different countries, utilizing data from the World Bank. Detailed visualizations were created with Power BI to explore the correlations between variables. The study also applied simple linear regression techniques to quantify the impact of each variable, offering valuable insights for public policies aimed at improving global quality of life.",
-        link: "#"
+        description: "This project, developed using Power BI, investigates the influence of various socioeconomic factors on life expectancy across different countries, utilizing data from the World Bank. Detailed visualizations were created with Power BI to explore the correlations between variables. The study also applied simple linear regression techniques to quantify the impact of each variable, offering valuable insights for public policies aimed at improving global quality of life. You can read the full article <a href='CDS-final.html' target='_blank'>here</a>.",
+        keywords: "Data Wrangling, Exploratory Data Analysis (EDA), Regression Analysis, Data Visualization, Power BI",
+        link: "https://app.powerbi.com/view?r=eyJrIjoiNmJkZTk1NmMtYjFkNC00Y2M5LTgyYzYtMDE2Mjk2MWEwYTExIiwidCI6ImQ1MWRlNTk2LTQ1YTAtNGFhNS1hMGQ4LTQ3ZDFjOTU4YWEzMiIsImMiOjh9",
+        image: "images/life_expectancy.jpg"
       },
       project7: {
         title: "Prediction and Classification of Individuals with Thyroid Pathology Using Data Mining Techniques",
         description: "This project focuses on the application of data mining techniques to predict and classify individuals with thyroid dysfunctions, such as hypothyroidism and hyperthyroidism. Using a dataset from the UCI Machine Learning Repository and the software RapidMiner, the study developed and tested several machine learning models, including decision trees, k-nearest neighbors, and support vector machines, to accurately diagnose thyroid conditions. The project aimed to provide a reliable tool for healthcare professionals to assist in the early detection and treatment of thyroid disorders.",
-        keywords: "Data Mining, Machine Learning, Classification Models, RapidMiner",
+        keywords: "Data Mining, Data analysis, Machine Learning, Classification Models, RapidMiner",
         link: "Artigo-ECDS.html",
         image: "images/thyroid.jpg"
       },
@@ -299,7 +301,7 @@ body, html {
 
     const project = projects[projectId];
     document.getElementById("projectTitle").innerText = project.title;
-    document.getElementById("projectDescription").innerText = project.description;
+    document.getElementById("projectDescription").innerHTML = project.description;
     document.getElementById("projectKeywords").innerHTML = "<strong style='color: black;'>Keywords:</strong> " + project.keywords;
     document.getElementById("projectLink").href = project.link;
     document.querySelector(".modal-image img").src = project.image;
